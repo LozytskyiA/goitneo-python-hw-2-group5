@@ -18,9 +18,10 @@ class Name(Field):
 
 class Phone(Field):
     def __init__(self, phone):
-        super().__init__(phone)
+        self.value = phone
+        self.__validate()
 
-    def validate(self):
+    def __validate(self):
         if len(self.value) != 10 or not self.value.isdigit():
             raise ValueError("Phone number must be 10 digits long")
 
